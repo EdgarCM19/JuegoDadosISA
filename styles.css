@@ -123,6 +123,7 @@ body{
 }
 .gameLabels{
   margin-left: 20px;
+  margin-top: 1em;
   color: #4e6e58;
   font-size: larger;
   font-weight: 500;
@@ -155,4 +156,115 @@ body{
   margin-left: 7.5%;
   width: 25%;
   margin-top: 10%;
+}
+
+.modal {
+  width: 50vw;
+  height: 70vh;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.modal.active {
+  visibility: visible;
+}
+
+.modal .modal-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.modal .modal-header > * {
+  margin: 0 1em;
+}
+
+.modal-title {
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+}
+
+.modal .modal-content{ 
+  width: 100%;
+}
+
+.modal-score {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.history {
+  /* width: 100%; */
+  /* max-height: 180px; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.history-table {
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 0.5em 1em;
+}
+
+.modal-btns {
+  width: 100%;
+  height: auto;
+  margin-top: 1em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.btn {
+  color: #4e6e58;
+  /* width: 50%; */
+  border-radius: 16px;
+  margin-top: 1em;
+  border: solid 2px;
+  background-color: #d7bcc8;
+  text-transform: uppercase;
+  /* font-size: 25px; */
+  font-size: 1em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-weight: 600;
+  /* height: 60px; */
+}
+
+.btn:hover {
+  outline: none !important;
+  color: #cbac88;
+}
+
+.aux {
+  width: 100%;
+  height: 100%;
+  color: #4e6e58;
+}
+
+.aux:hover {
+  color: #cbac88;
 }

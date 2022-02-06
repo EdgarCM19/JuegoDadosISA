@@ -12,16 +12,24 @@
             <div class="formulary">
                 <div>
                     <label class="gameLabels">Score : 0   </label> 
-                    <label class="gameLabels">Tiros restantes : 0</label>
+                    <label id="chances" class="gameLabels">Tiros restantes : 0</label>
                 </div>
                 <div class="images">
-                    <img src="dices/dice1.svg" class="twoImageL">
-                    <img src="dices/dice3.svg" class="twoImageR">
+                    <img src="dices/dice1.svg" class="twoImageL" id="dice-1">
+                    <img src="dices/dice3.svg" class="twoImageR" id="dice-2">
                 </div>
                 <div class="inputsStyles">
-                    <button class="loginButton">Tirar </button>
+                    <button class="loginButton" id="btn-throw">Tirar </button>
                 </div>
             </div>
         </div>
+
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="./src/game.js"></script>
+        <script src="./src/dice.js"></script>
+        <script src="./src/player.js"></script>
+        <script src="./src/jqueryhooks.js"></script>
     </body>
 </html>
