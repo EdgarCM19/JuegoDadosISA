@@ -90,7 +90,7 @@ class Game{
     register(player, level){
         const data = JSON.parse(localStorage.getItem(player));
         const level_selector = level == 1 ? 'easy' :
-                            level == 1 ? 'mid' :
+                            level == 2 ? 'mid' :
                             level == 3 ? 'hard' : '';
         data['games'][level_selector].unshift({ "won": this.score, "chances" : 3 - this.chances });
         console.log(data['games']);
