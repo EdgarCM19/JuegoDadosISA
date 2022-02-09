@@ -13,7 +13,8 @@ body{
   color: #776d5a;
   font-size: 80px;
   text-align: -webkit-center;
-  margin-top: 44px;
+  /* margin-top: 44px; */
+  margin: auto auto;
 }
 .card{
   background-color: #d7bcc8;
@@ -37,10 +38,13 @@ body{
 }
 .registerFormulary{
   background-color: #d7bcc8;
-  height: 700px;
+  /* height: 700px; */
+  /* height: 70vh; */
+  height: auto;
   width: 50%;
   margin: auto;
-  height: 50%;
+  /* height: 50%; */
+  padding: 1em 2em;
   top: 0;
   left: 0;
   right: 0;
@@ -56,7 +60,7 @@ body{
   margin-top: 10px;
   background-color: lightgray;
   font-size: xx-large;
-  width: 50%;
+  width: 70%;
   background: transparent;
 }
 .inputs:hover{

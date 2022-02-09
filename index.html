@@ -10,19 +10,22 @@
             <div class="formulary">
                 <p class="loginTitle"> Ingresar</p>
                 <div class="inputsStyles">
-                    <input type="text" placeholder="Correo" class="inputs"> 
+                    <input id="login-initials" type="text" placeholder="Iniciales" class="inputs"> 
                 </div>
                 <div class="inputsStyles">
-                    <input type="password" placeholder="Contraseña" class="inputs">
+                    <button id="btn-login" type="button" class="loginButton">Iniciar sesion</button>    
                 </div>
                 <div class="inputsStyles">
-                    <button type="button" class="loginButton"> <a href="gameSelection.html" class="noLink">iniciar sesion</a> </button>    
-                </div>
-                <div class="inputsStyles">
-                    
                     <a href="signup.html">¿No tienes una cuenta? Registrate</a>
                 </div>
             </div>        
         </div>
+
+        <script src="./src/storage.js"></script>
+        <script src="./src/game.js"></script>
+        <script src="./src/dice.js"></script>
+        <script src="./src/player.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="./src/jqueryhooks.js"></script>
     </body>
 </html>

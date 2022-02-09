@@ -1,11 +1,7 @@
 class Player{
-    constructor(){
-        this.name="";
-        this.initials="";
-        this.dateBirth="";
-        this.numChances=0;
-    }
-
-    showDates(){
+    constructor(nombre, iniciales, fecha){
+        this.nombre = nombre;
+        this.iniciales = iniciales;
+        this.fechaNacimiento = fecha;
     }
 }

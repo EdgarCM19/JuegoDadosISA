@@ -5,8 +5,11 @@ class Game{
         this.dices = new Array(this.level).fill(new Dice());
         // Se cargan los datos del jugador desde la variable de sesion
         // guardada del login, o registro.
-        // this.player = new Player(sessionStorage.getItem('user') || 'guess');
-        this.player = new Player();
+        const user_initials = sessionStorage.getItem('user');
+        if(user_initials !== null){
+            const [user_name, user_date] = Storage.getPlayerData(user_initials);
+            this.player = new Player(user_name, user_initials, user_date);
+        }
         this.result = false;
         this.score = 0;
         this.chances = 3;
@@ -19,23 +22,23 @@ class Game{
         let sum = dices_sum.reduce((prev, current, index) => 
             prev + current
         );
-        
+        console.log("/", sum);
         this.result = true;
         switch(this.level){
             case 1:
-                if(dices_sum != 6) {
+                if(sum != 6) {
                     this.chances--;
                     this.result = false;
                 }
                 break;
             case 2:
-                if(dices_sum != 7) {
+                if(sum != 7) {
                     this.chances--;
                     this.result = false;
                 }
                 break;
             case 3:
-                if(dices_sum != 15) {
+                if(sum != 15) {
                     this.chances--;
                     this.result = false;
                 }
@@ -55,24 +58,12 @@ class Game{
         return value;
     }
 
-    getPlayerScore(player, level){
-        // const data = JSON.parse(localStorage.getItem(player));
-        // const level_selector = level == 1 ? 'easy' :
-        //                     level == 2 ? 'mid' :
-        //                     level == 3 ? 'hard' : '';
-        // console.log('Getting stats from level: ', level_selector);
-        // const level_score = data['games'][level_selector];
-        // const wins = level_score.reduce((prev, curr, index) => curr['won'] ? prev + 1 : prev, 0);
-        // const losses = level_score.length - wins;
-        // // const loss = level_score.reduce((prev, curr, index) => !curr['won'] ? prev + 1 : prev);
-        // console.log()
-        // return [wins, losses, level_score];
-        return Storage.getPlayerScore(player, level);
+    getPlayerScore(){
+        return Storage.getPlayerScore(this.player.iniciales, this.level);
     }
 
     changeDiceImage(dice, value){
         let file = `dices/dice${value}.svg`;
-        console.log(file);
         $(`#dice-${dice}`).attr('src', file);
     }
 
@@ -81,12 +72,17 @@ class Game{
         this.result = true;
     }
 
-    recordResult(player, level){
-        Storage.setPlayerScore(player, level, this.score, this.chances);
+    recordResult(){
+        Storage.setPlayerScore(
+            this.player.iniciales, 
+            this.level, 
+            this.score, 
+            this.chances
+        );
     }
 
-    register(){
-        
+    register(user_name, user_initials, user_date){
+        return Storage.registerPlayer(user_name, user_initials, user_date);
     }
 
     selectLevel(level){
@@ -94,10 +90,12 @@ class Game{
         this.level = level;
     }
 
-    logIn(){
+    logIn(user_initials){
+        return localStorage.getItem(user_initials) !== null
     }
 
     logOut(){
         sessionStorage.removeItem('level');
+        sessionStorage.removeItem('user');
     }
 }
