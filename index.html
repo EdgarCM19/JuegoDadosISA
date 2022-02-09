@@ -32,14 +32,18 @@
     <script type="text/javascript">
         async function login(){
             let user = JSON.parse(localStorage.getItem("user"))
+            let band = false
             for (var item in user){
                 if(user[item].data.name === document.getElementById("name").value && user[item].data.pass === document.getElementById("password").value){
-                    localStorage.setItem("loggedUser", JSON.stringify(user[item]))
-                    window.location.href = "gameSelection.html";
-                }else{
-                    alert("Usuario no registrado, por favor regístrate para poder iniciar sesión")
-                    window.location.href = "signup.html";
+                    band = true
                 }
+            }
+            if(band){
+                localStorage.setItem("loggedUser", JSON.stringify(user[item]))
+                window.location.href = "gameSelection.html";
+            }else{
+                alert("Usuario no registrado, por favor regístrate para poder iniciar sesión")
+                window.location.href = "signup.html";
             }
         }
     </script>
