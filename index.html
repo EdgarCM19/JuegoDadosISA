@@ -1,28 +1,52 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html: charset=utf-8" />        
-        <link rel="stylesheet"  href="styles.css">
-        <title>Juego de dados</title>
-    </head>
-    <body>
-        <h1 class="diceTitle">Game of dices</h1>
-        <div class="card">
-            <div class="formulary">
-                <p class="loginTitle"> Ingresar</p>
-                <div class="inputsStyles">
-                    <input type="text" placeholder="Correo" class="inputs"> 
-                </div>
-                <div class="inputsStyles">
-                    <input type="password" placeholder="Contraseña" class="inputs">
-                </div>
-                <div class="inputsStyles">
-                    <button type="button" class="loginButton"> <a href="gameSelection.html" class="noLink">iniciar sesion</a> </button>    
-                </div>
-                <div class="inputsStyles">
-                    
-                    <a href="signup.html">¿No tienes una cuenta? Registrate</a>
-                </div>
-            </div>        
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html: charset=utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Juego de dados</title>
+</head>
+
+<body>
+    <h1 class="diceTitle">Game of dices</h1>
+    <div class="card">
+        <div class="formulary">
+            <p class="loginTitle"> Ingresar</p>
+            <div class="inputsStyles">
+                <input id="name" type="text" placeholder="Nombre de usuario" class="inputs">
+            </div>
+            <div class="inputsStyles">
+                <input id="password" type="password" placeholder="Contraseña" class="inputs">
+            </div>
+            <div id="login" class="inputsStyles">
+
+                <button onclick="login()" type="button" class="loginButton"> <a class="noLink">iniciar sesión</a> </button>
+            </div>
+            <div class="inputsStyles">
+
+                <a href="signup.html">¿No tienes una cuenta? Registrate</a>
+            </div>
         </div>
-    </body>
+    </div>
+
+
+    <script type="text/javascript">
+        async function login(){
+            let user = JSON.parse(localStorage.getItem("user"))
+            for (var item in user){
+                if(user[item].data.name === document.getElementById("name").value && user[item].data.pass === document.getElementById("password").value){
+                    localStorage.setItem("loggedUser", JSON.stringify(user[item]))
+                    window.location.href = "gameSelection.html";
+                }
+                // }else{
+                //     alert("Usuario no registrado, por favor regístrate para poder iniciar sesión")
+                //     window.location.href = "signup.html";
+                // }
+            }
+        }
+    </script>
+</body>
+
 </html>
+
+
+<!-- href="gameSelection.html" -->

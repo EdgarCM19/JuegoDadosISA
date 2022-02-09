@@ -1,27 +1,71 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html: charset=utf-8" />        
-        <link rel="stylesheet"  href="styles.css">
-        <title>Juego de dados</title>
-    </head>
-    <body>
-        <div class="backButton">      
-            <a href="index.html" class="noLink back"> < Regresar</a>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html: charset=utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Juego de dados</title>
+</head>
+
+<body>
+    <div class="backButton">
+        <a href="index.html" class="noLink back">
+            < Regresar</a>
+    </div>
+    <div class="registerFormulary">
+        <div class="formulary">
+            <p class="loginTitle">Registrarse</p>
+            <div class="inputsStyles">
+                <input id="name" type="text" placeholder="Nombre" class="inputs">
+            </div>
+            <div class="inputsStyles">
+                <input id="email" type="text" placeholder="Correo" class="inputs">
+            </div>
+            <div class="inputsStyles">
+                <input id="password" type="password" placeholder="Contraseña" class="inputs">
+            </div>
+            <div class="inputsStyles">
+                <button onclick="register()" type="button" class="loginButton">Registrarse</button>
+            </div>
+
         </div>
-        <div class="registerFormulary">
-            <div class="formulary">
-                <p class="loginTitle">Registrarse</p>
-                <div class="inputsStyles">
-                    <input type="text" placeholder="Correo" class="inputs"> 
-                </div>
-                <div class="inputsStyles">
-                    <input type="password" placeholder="Contraseña" class="inputs">
-                </div>
-                <div class="inputsStyles">
-                    <button type="button" class="loginButton">Registrarse</button>    
-                </div>
-                
-            </div>        
-        </div>
-    </body>
+    </div>
+
+    <script>
+        function register() {
+            var key = document.getElementById("name").value
+            var userInfo = {};
+            userInfo[key] = {
+                "data": {
+                    name: document.getElementById("name").value,
+                    pass: document.getElementById("password").value,
+                    email: document.getElementById("email").value
+                },
+                "games": {
+                    "easy": [
+                        {
+                            "won": false,
+                            "chances": 0
+                        }
+                    ],
+                    "mid": [],
+                    "hard": []
+                }
+            }
+
+            var recoveredData = localStorage.getItem("user")
+
+            if (recoveredData == null) {
+                localStorage.setItem('user', JSON.stringify(userInfo))
+            } else {
+                let data = JSON.parse(recoveredData)
+                data = { ...data, ...userInfo};
+                localStorage.setItem('user', JSON.stringify(data)) // se registra el usuario en el localStorage
+            }
+
+            localStorage.setItem("loggedUser", JSON.stringify(userInfo)) //se guarda el usuario que esta en sesion actualmente
+            window.location.href = "gameSelection.html";
+        }
+    </script>
+</body>
+
 </html>

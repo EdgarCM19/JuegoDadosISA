@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="backButton">
-            <a href="index.html" class="noLink back" style="text-align-last: right;">Cerrar sesion</a>
+            <a onclick="logout()" class="noLink back" style="text-align-last: right;">Cerrar sesion</a>
         </div>
         <div class="card">
             <div class="formulary">
@@ -23,5 +23,11 @@
             </div>
         </div>
         
+        <script>
+            function logout(){
+                localStorage.setItem("loggedUser", null)
+                window.location.href = "index.html";
+            }
+        </script>
     </body>
 </html>
