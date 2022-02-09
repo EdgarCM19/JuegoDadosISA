@@ -36,11 +36,10 @@
                 if(user[item].data.name === document.getElementById("name").value && user[item].data.pass === document.getElementById("password").value){
                     localStorage.setItem("loggedUser", JSON.stringify(user[item]))
                     window.location.href = "gameSelection.html";
+                }else{
+                    alert("Usuario no registrado, por favor regístrate para poder iniciar sesión")
+                    window.location.href = "signup.html";
                 }
-                // }else{
-                //     alert("Usuario no registrado, por favor regístrate para poder iniciar sesión")
-                //     window.location.href = "signup.html";
-                // }
             }
         }
     </script>
